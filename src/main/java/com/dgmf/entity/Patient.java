@@ -14,7 +14,9 @@ import java.util.Date;
 public class Patient {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @Column(name = "patient_name", length = 50)
+    private String patientName;
+    @Temporal(TemporalType.DATE) // Day-Month-Year
     private Date dob;
     private boolean isSick;
     private int score;
