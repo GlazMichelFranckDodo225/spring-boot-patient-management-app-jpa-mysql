@@ -6,10 +6,9 @@ import com.dgmf.web.dto.PatientDtoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/patients")
@@ -25,5 +24,10 @@ public class PatientController {
                 patientService.createPatient(patientDtoRequest),
                 HttpStatus.CREATED
         );
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PatientDtoResponse>> getAllPatients() {
+        return ResponseEntity.ok(patientService.getAllPatients());
     }
 }
